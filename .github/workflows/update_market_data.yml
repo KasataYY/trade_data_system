@@ -1,0 +1,32 @@
+name: Update Market Data
+
+on:
+  schedule:
+    - cron: "0 16 * * *"   # 毎日16:00 UTC（= 日本時間 1:00）
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run update script
+        run: python update_market_data.py
+
+      - name: Commit and push data
+        run: |
+          git config --global user.name "KasataYY"
+          git config --global user.email "kasata1005@gmail.com"
+          git add market_data
+          git commit -m "Update market data" || echo "No changes"
+          git push
