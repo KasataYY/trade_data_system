@@ -3,82 +3,114 @@ import pandas as pd
 import json
 from pathlib import Path
 
-# ===== 設定 =====
-SYMBOL = "7203.T"        # トヨタ
-BASE_DIR = Path("market_data") / "7203"
+# =====================
+# 設定
+# =====================
+BASE_DIR = Path("market_data")
+SYMBOLS_FILE = BASE_DIR / "symbols.json"
 
 BASE_DIR.mkdir(parents=True, exist_ok=True)
 
-# ===== 5分足（直近3日）=====
-print("Fetching intraday 5m data...")
+# =====================
+# 銘柄リスト読み込み
+# =====================
+with open(SYMBOLS_FILE, "r", encoding="utf-8") as f:
+    symbols = json.load(f)["symbols"]
 
-intraday_df = yf.download(
-    SYMBOL,
-    interval="5m",
-    period="3d",
-    progress=False
-)
+# =====================
+# 銘柄ごとに処理
+# =====================
+for s in symbols:
+    code = s["code"]      # 例: 7203
+    ticker = s["ticker"]  # 例: 7203.T
 
-intraday_df.columns = intraday_df.columns.get_level_values(0)
+    print(f"\n=== Fetching {code} ({ticker}) ===")
 
-# タイムゾーンの変更
-idx = intraday_df.index
-if idx.tz is None:
-    intraday_df.index = idx.tz_localize("UTC").tz_convert("Asia/Tokyo")
-else:
-    intraday_df.index = idx.tz_convert("Asia/Tokyo")
+    out_dir = BASE_DIR / code
+    out_dir.mkdir(parents=True, exist_ok=True)
 
-intraday_df = intraday_df.reset_index()
+    # =====================
+    # 5分足（直近3日）
+    # =====================
+    print("Fetching intraday 5m data...")
 
-intraday_data = []
-for _, row in intraday_df.iterrows():
-    intraday_data.append({
-        "time": row["Datetime"].strftime("%Y-%m-%d %H:%M"),
-        "open": round(row["Open"], 2),
-        "high": round(row["High"], 2),
-        "low": round(row["Low"], 2),
-        "close": round(row["Close"], 2),
-        "volume": int(row["Volume"]),
-    })
+    intraday_df = yf.download(
+        ticker,
+        interval="5m",
+        period="3d",
+        progress=False
+    )
 
-with open(BASE_DIR / "intraday_5m.json", "w", encoding="utf-8") as f:
-    json.dump(intraday_data, f, ensure_ascii=False, indent=2)
+    if intraday_df.empty:
+        print("⚠ intraday data empty")
+        continue
 
-print("intraday_5m.json updated")
+    intraday_df.columns = intraday_df.columns.get_level_values(0)
 
-# ===== 日足（直近3年）=====
-print("Fetching daily data...")
+    idx = intraday_df.index
+    if idx.tz is None:
+        intraday_df.index = idx.tz_localize("UTC").tz_convert("Asia/Tokyo")
+    else:
+        intraday_df.index = idx.tz_convert("Asia/Tokyo")
 
-daily_df = yf.download(
-    SYMBOL,
-    interval="1d",
-    period="3y",
-    progress=False
-)
+    intraday_df = intraday_df.reset_index()
 
-daily_df.columns = daily_df.columns.get_level_values(0)
+    intraday_data = []
+    for _, row in intraday_df.iterrows():
+        intraday_data.append({
+            "time": row["Datetime"].strftime("%Y-%m-%d %H:%M"),
+            "open": round(row["Open"], 2),
+            "high": round(row["High"], 2),
+            "low": round(row["Low"], 2),
+            "close": round(row["Close"], 2),
+            "volume": int(row["Volume"]),
+        })
 
-idx = daily_df.index
-if idx.tz is None:
-    daily_df.index = idx.tz_localize("UTC").tz_convert("Asia/Tokyo")
-else:
-    daily_df.index = idx.tz_convert("Asia/Tokyo")
+    with open(out_dir / "intraday_5m.json", "w", encoding="utf-8") as f:
+        json.dump(intraday_data, f, ensure_ascii=False, indent=2)
 
-daily_df = daily_df.reset_index()
+    print("intraday_5m.json updated")
 
-daily_data = []
-for _, row in daily_df.iterrows():
-    daily_data.append({
-        "date": row["Date"].strftime("%Y-%m-%d"),
-        "open": round(row["Open"], 2),
-        "high": round(row["High"], 2),
-        "low": round(row["Low"], 2),
-        "close": round(row["Close"], 2),
-        "volume": int(row["Volume"]),
-    })
+    # =====================
+    # 日足（直近3年）
+    # =====================
+    print("Fetching daily data...")
 
-with open(BASE_DIR / "daily.json", "w", encoding="utf-8") as f:
-    json.dump(daily_data, f, ensure_ascii=False, indent=2)
+    daily_df = yf.download(
+        ticker,
+        interval="1d",
+        period="3y",
+        progress=False
+    )
 
-print("daily.json updated")
-print("✅ Market data update completed")
+    if daily_df.empty:
+        print("⚠ daily data empty")
+        continue
+
+    daily_df.columns = daily_df.columns.get_level_values(0)
+
+    idx = daily_df.index
+    if idx.tz is None:
+        daily_df.index = idx.tz_localize("UTC").tz_convert("Asia/Tokyo")
+    else:
+        daily_df.index = idx.tz_convert("Asia/Tokyo")
+
+    daily_df = daily_df.reset_index()
+
+    daily_data = []
+    for _, row in daily_df.iterrows():
+        daily_data.append({
+            "date": row["Date"].strftime("%Y-%m-%d"),
+            "open": round(row["Open"], 2),
+            "high": round(row["High"], 2),
+            "low": round(row["Low"], 2),
+            "close": round(row["Close"], 2),
+            "volume": int(row["Volume"]),
+        })
+
+    with open(out_dir / "daily.json", "w", encoding="utf-8") as f:
+        json.dump(daily_data, f, ensure_ascii=False, indent=2)
+
+    print("daily.json updated")
+
+print("\n✅ Market data update completed")
