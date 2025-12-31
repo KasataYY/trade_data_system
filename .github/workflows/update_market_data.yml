@@ -3,7 +3,7 @@ name: Update Market Data
 on:
   workflow_dispatch:
   schedule:
-    - cron: "20 9 * * *"
+    - cron: "30 9 * * *"
 permissions:
   contents: write
 
