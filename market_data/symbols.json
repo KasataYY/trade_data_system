@@ -2,241 +2,241 @@
   "9984": {
     "ticker": "9984.T",
     "name": "ソフトバンクグループ",
-    "parentTag": "投資",
-    "subTags": ["AI", "高ボラ", "日経225"]
+    "parentTag": "テクノロジー",
+    "subTags": ["AI", "高ボラ"]
   },
   "8035": {
     "ticker": "8035.T",
     "name": "東京エレクトロン",
-    "parentTag": "半導体",
-    "subTags": ["設備", "高ボラ", "日経225"]
+    "parentTag": "テクノロジー",
+    "subTags": ["半導体", "高ボラ"]
   },
   "6146": {
     "ticker": "6146.T",
     "name": "ディスコ",
-    "parentTag": "半導体",
-    "subTags": ["値がさ株", "超高ボラ"]
+    "parentTag": "テクノロジー",
+    "subTags": ["半導体", "超高ボラ"]
   },
   "6920": {
     "ticker": "6920.T",
     "name": "レーザーテック",
-    "parentTag": "半導体",
+    "parentTag": "テクノロジー",
     "subTags": ["検査装置", "高ボラ"]
   },
   "7974": {
     "ticker": "7974.T",
     "name": "任天堂",
-    "parentTag": "ゲーム",
+    "parentTag": "消費・サービス",
     "subTags": ["IP", "大型株"]
   },
   "6758": {
     "ticker": "6758.T",
     "name": "ソニーグループ",
-    "parentTag": "半導体",
+    "parentTag": "テクノロジー",
     "subTags": ["エンタメ", "日経225"]
   },
   "6501": {
     "ticker": "6501.T",
     "name": "日立製作所",
-    "parentTag": "インフラ",
-    "subTags": ["DX", "日経225"]
+    "parentTag": "インフラ・公共",
+    "subTags": ["DX", "大型株"]
   },
   "6861": {
     "ticker": "6861.T",
     "name": "キーエンス",
-    "parentTag": "FA",
+    "parentTag": "テクノロジー",
     "subTags": ["値がさ株", "超高ボラ"]
   },
   "6857": {
     "ticker": "6857.T",
     "name": "アドバンテスト",
-    "parentTag": "半導体",
+    "parentTag": "テクノロジー",
     "subTags": ["検査装置", "高ボラ"]
   },
   "7735": {
     "ticker": "7735.T",
     "name": "SCREEN",
-    "parentTag": "半導体",
+    "parentTag": "テクノロジー",
     "subTags": ["装置", "高ボラ"]
   },
   "7203": {
     "ticker": "7203.T",
     "name": "トヨタ自動車",
-    "parentTag": "自動車",
+    "parentTag": "自動車・機械",
     "subTags": ["大型株", "日経225"]
   },
   "7267": {
     "ticker": "7267.T",
     "name": "ホンダ",
-    "parentTag": "自動車",
+    "parentTag": "自動車・機械",
     "subTags": ["グローバル"]
   },
   "9432": {
     "ticker": "9432.T",
     "name": "NTT",
-    "parentTag": "通信",
+    "parentTag": "インフラ・公共",
     "subTags": ["ディフェンシブ"]
   },
   "9433": {
     "ticker": "9433.T",
     "name": "KDDI",
-    "parentTag": "通信",
+    "parentTag": "インフラ・公共",
     "subTags": ["大型株"]
   },
   "8306": {
     "ticker": "8306.T",
     "name": "三菱UFJ",
-    "parentTag": "銀行",
+    "parentTag": "金融",
     "subTags": ["金利", "日経225"]
   },
   "8316": {
     "ticker": "8316.T",
     "name": "三井住友FG",
-    "parentTag": "銀行",
+    "parentTag": "金融",
     "subTags": ["金利"]
   },
   "8411": {
     "ticker": "8411.T",
     "name": "みずほFG",
-    "parentTag": "銀行",
+    "parentTag": "金融",
     "subTags": ["高ボラ"]
   },
   "9107": {
     "ticker": "9107.T",
     "name": "川崎汽船",
-    "parentTag": "海運",
+    "parentTag": "インフラ・公共",
     "subTags": ["市況", "高ボラ"]
   },
   "9104": {
     "ticker": "9104.T",
     "name": "商船三井",
-    "parentTag": "海運",
+    "parentTag": "インフラ・公共",
     "subTags": ["市況"]
   },
   "9101": {
     "ticker": "9101.T",
     "name": "日本郵船",
-    "parentTag": "海運",
+    "parentTag": "インフラ・公共",
     "subTags": ["市況"]
   },
   "1605": {
     "ticker": "1605.T",
     "name": "INPEX",
-    "parentTag": "資源",
+    "parentTag": "資源・エネルギー",
     "subTags": ["原油", "高ボラ"]
   },
   "5020": {
     "ticker": "5020.T",
     "name": "ENEOS",
-    "parentTag": "エネルギー",
+    "parentTag": "資源・エネルギー",
     "subTags": ["資源"]
   },
   "5713": {
     "ticker": "5713.T",
     "name": "住友金属鉱山",
-    "parentTag": "資源",
+    "parentTag": "資源・エネルギー",
     "subTags": ["EV", "高ボラ"]
   },
   "5401": {
     "ticker": "5401.T",
     "name": "日本製鉄",
-    "parentTag": "鉄鋼",
+    "parentTag": "資源・エネルギー",
     "subTags": ["景気敏感"]
   },
   "5406": {
     "ticker": "5406.T",
     "name": "神戸製鋼所",
-    "parentTag": "鉄鋼",
+    "parentTag": "資源・エネルギー",
     "subTags": ["高ボラ"]
   },
   "6954": {
     "ticker": "6954.T",
     "name": "ファナック",
-    "parentTag": "FA",
+    "parentTag": "自動車・機械",
     "subTags": ["自動化"]
   },
   "6326": {
     "ticker": "6326.T",
     "name": "クボタ",
-    "parentTag": "機械",
+    "parentTag": "自動車・機械",
     "subTags": ["農業"]
   },
   "6723": {
     "ticker": "6723.T",
     "name": "ルネサス",
-    "parentTag": "半導体",
+    "parentTag": "テクノロジー",
     "subTags": ["車載"]
   },
   "7751": {
     "ticker": "7751.T",
     "name": "キヤノン",
-    "parentTag": "精密機器",
+    "parentTag": "テクノロジー",
     "subTags": []
   },
   "7752": {
     "ticker": "7752.T",
     "name": "リコー",
-    "parentTag": "OA機器",
+    "parentTag": "テクノロジー",
     "subTags": []
   },
   "3659": {
     "ticker": "3659.T",
     "name": "ネクソン",
-    "parentTag": "ゲーム",
+    "parentTag": "消費・サービス",
     "subTags": ["オンライン", "高ボラ"]
   },
   "9766": {
     "ticker": "9766.T",
     "name": "コナミG",
-    "parentTag": "ゲーム",
+    "parentTag": "消費・サービス",
     "subTags": ["IP"]
   },
   "3635": {
     "ticker": "3635.T",
     "name": "コーエーテクモ",
-    "parentTag": "ゲーム",
+    "parentTag": "消費・サービス",
     "subTags": []
   },
   "4755": {
     "ticker": "4755.T",
     "name": "楽天グループ",
-    "parentTag": "EC",
-    "subTags": ["通信", "高ボラ"]
+    "parentTag": "消費・サービス",
+    "subTags": ["EC", "高ボラ"]
   },
   "2413": {
     "ticker": "2413.T",
     "name": "エムスリー",
-    "parentTag": "医療",
+    "parentTag": "ヘルスケア",
     "subTags": ["グロース", "高ボラ"]
   },
   "4568": {
     "ticker": "4568.T",
     "name": "第一三共",
-    "parentTag": "医薬",
+    "parentTag": "ヘルスケア",
     "subTags": ["大型株"]
   },
   "4519": {
     "ticker": "4519.T",
     "name": "中外製薬",
-    "parentTag": "医薬",
+    "parentTag": "ヘルスケア",
     "subTags": ["ディフェンシブ"]
   },
   "4452": {
     "ticker": "4452.T",
     "name": "花王",
-    "parentTag": "日用品",
+    "parentTag": "消費・サービス",
     "subTags": ["ディフェンシブ"]
   },
   "8267": {
     "ticker": "8267.T",
     "name": "イオン",
-    "parentTag": "小売",
+    "parentTag": "消費・サービス",
     "subTags": ["内需"]
   },
   "9983": {
     "ticker": "9983.T",
     "name": "ファーストリテイリング",
-    "parentTag": "アパレル",
+    "parentTag": "消費・サービス",
     "subTags": ["値がさ株", "高ボラ"]
   }
 }
