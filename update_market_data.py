@@ -27,26 +27,30 @@ for code, info in SYMBOLS.items():
     stock_dir = BASE_DIR / code
     stock_dir.mkdir(parents=True, exist_ok=True)
 
-    # ===== 5分足 =====
-    intraday_df = yf.download(
+    # ===== 1分足 (intraday_1m.json) =====
+    # アニメーションや5分足合成のベースデータ
+    # period="5d" 程度が取得の安定性とデータ量のバランスが良いです
+    min1_df = yf.download(
         symbol,
-        interval="5m",
-        period="3d",
+        interval="1m",
+        period="5d",
         progress=False
     )
 
-    if not intraday_df.empty:
-        intraday_df.columns = intraday_df.columns.get_level_values(0)
+    if not min1_df.empty:
+        # マルチインデックス対策
+        min1_df.columns = min1_df.columns.get_level_values(0)
 
-        idx = intraday_df.index
-        intraday_df.index = (
+        # タイムゾーンを東京に変換
+        idx = min1_df.index
+        min1_df.index = (
             idx.tz_localize("UTC").tz_convert("Asia/Tokyo")
             if idx.tz is None else idx.tz_convert("Asia/Tokyo")
         )
 
-        intraday_df = intraday_df.reset_index()
+        min1_df = min1_df.reset_index()
 
-        intraday_data = [
+        min1_data = [
             {
                 "time": row["Datetime"].strftime("%Y-%m-%d %H:%M"),
                 "open": round(float(row["Open"]), 2),
@@ -55,13 +59,14 @@ for code, info in SYMBOLS.items():
                 "close": round(float(row["Close"]), 2),
                 "volume": int(row["Volume"])
             }
-            for _, row in intraday_df.iterrows()
+            for _, row in min1_df.iterrows()
         ]
 
-        with open(stock_dir / "intraday_5m.json", "w", encoding="utf-8") as f:
-            json.dump(intraday_data, f, ensure_ascii=False, indent=2)
+        with open(stock_dir / "intraday_1m.json", "w", encoding="utf-8") as f:
+            json.dump(min1_data, f, ensure_ascii=False, indent=2)
 
-    # ===== 日足 =====
+    # ===== 日足 (daily.json) =====
+    # 長期チャート用
     daily_df = yf.download(
         symbol,
         interval="1d",
@@ -97,4 +102,4 @@ for code, info in SYMBOLS.items():
 
     print(f"=== {code} completed ===\n")
 
-print("🎉 All market data update completed")
+print("🎉 All market data update completed (1m & Daily)")
