@@ -5873,10 +5873,10 @@
   },
   {
     "date": "2026-04-10",
-    "open": NaN,
-    "high": NaN,
-    "low": NaN,
-    "close": NaN,
+    "open": 154.1,
+    "high": 154.3,
+    "low": 152.6,
+    "close": 153.1,
     "volume": 238253700
   }
 ]
