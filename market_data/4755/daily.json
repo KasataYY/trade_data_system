@@ -5862,5 +5862,13 @@
     "low": 745.1,
     "close": 751.0,
     "volume": 14867800
+  },
+  {
+    "date": "2026-05-08",
+    "open": NaN,
+    "high": NaN,
+    "low": NaN,
+    "close": NaN,
+    "volume": 10915700
   }
 ]
