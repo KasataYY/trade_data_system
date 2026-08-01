@@ -5865,10 +5865,10 @@
   },
   {
     "date": "2026-07-31",
-    "open": NaN,
-    "high": NaN,
-    "low": NaN,
-    "close": NaN,
+    "open": 1592.0,
+    "high": 1652.0,
+    "low": 1590.0,
+    "close": 1609.5,
     "volume": 1848000
   }
 ]
